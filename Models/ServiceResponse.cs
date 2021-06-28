@@ -1,3 +1,5 @@
+using System;
+
 namespace dotnet_rpg.Models
 {
     public class ServiceResponse<T>
