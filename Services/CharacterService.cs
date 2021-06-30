@@ -29,6 +29,7 @@ namespace dotnet_rpg.Services
         {   
             var newDBCharacter = _mapper.Map<Character>(newCharacter);
            _context.Characters.Add(newDBCharacter);
+           
             await _context.SaveChangesAsync();
             return new ServiceResponse<newCharacterDto> { data = _mapper.Map<newCharacterDto>(newDBCharacter), success = true };
         }
@@ -46,7 +47,15 @@ namespace dotnet_rpg.Services
 
         public async Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto characterUpdate)
         {
-            throw new System.NotImplementedException();
+            var updateCharacterModel = _mapper.Map<Character>(characterUpdate);
+           
+            _context.Characters.Attach(updateCharacterModel);
+
+            _context.Entry(updateCharacterModel).State = EntityState.Modified;
+           
+            await _context.SaveChangesAsync(); 
+
+           return new ServiceResponse<GetCharacterDto> { data = _mapper.Map<GetCharacterDto>(updateCharacterModel), success = true };
         }
 
         public Task<ServiceResponse<GetCharacterDto>> DeleteCharacter(int id)

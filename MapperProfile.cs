@@ -11,6 +11,7 @@ namespace dotnet_rpg
             CreateMap<Character, GetCharacterDto>().ReverseMap();
             CreateMap<Character, AddCharacterDto>().ReverseMap();
             CreateMap<Character, newCharacterDto>().ReverseMap();
+            CreateMap<Character, UpdateCharacterDto>().ReverseMap();
             
         }
     }

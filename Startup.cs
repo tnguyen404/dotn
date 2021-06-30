@@ -44,6 +44,7 @@ namespace dotnet_rpg
             
             
             services.AddScoped<ICharacterService,CharacterService>();
+            services.AddScoped<IAuthService,AuthService>();
            
         }
 
