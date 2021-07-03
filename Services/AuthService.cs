@@ -102,11 +102,11 @@ namespace dotnet_rpg.Services
                     {
                         return false;
                     }
-                    return true;
+                    
                 }
+                return true;
 
             }
-            return false;
         }
 
         private string CreateToken(User user)

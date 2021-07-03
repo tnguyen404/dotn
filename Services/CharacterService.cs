@@ -35,8 +35,9 @@ namespace dotnet_rpg.Services
         }
 
 
-        public async Task<ServiceResponse<List<GetCharacterDto>>> GetAll()
-        => new ServiceResponse<List<GetCharacterDto>> { data = _mapper.Map<List<GetCharacterDto>>(await _context.Characters.AsNoTracking().ToListAsync()), success = true };
+        public async Task<ServiceResponse<List<GetCharacterDto>>> GetAll(int userID)
+        => new ServiceResponse<List<GetCharacterDto>> { data = _mapper.Map<List<GetCharacterDto>>(
+            await _context.Characters.AsNoTracking().Where(c => c.user.Id.Equals(userID)).ToListAsync()), success = true };
 
         public async Task<ServiceResponse<GetCharacterDto>> GetCharatecById(int id)
         => new ServiceResponse<GetCharacterDto> 

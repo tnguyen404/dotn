@@ -7,7 +7,7 @@ namespace dotnet_rpg.Services
 {
     public interface ICharacterService
     {
-        Task<ServiceResponse<List<GetCharacterDto>>> GetAll();
+        Task<ServiceResponse<List<GetCharacterDto>>> GetAll(int userID);
         Task<ServiceResponse<GetCharacterDto>> GetCharatecById(int id);
         Task<ServiceResponse<newCharacterDto>> AddNewCharacter(AddCharacterDto newCharacter);
 
